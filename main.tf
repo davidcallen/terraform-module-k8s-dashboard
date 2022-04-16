@@ -15,6 +15,7 @@ resource "helm_release" "kubernetes-dashboard" {
   namespace  = kubernetes_namespace.kubernetes-dashboard.id
   repository = "https://kubernetes.github.io/dashboard/"
   chart      = "kubernetes-dashboard"
+  wait_for_jobs = true
   set {
     name  = "metricsScraper.enabled"
     value = "true"
